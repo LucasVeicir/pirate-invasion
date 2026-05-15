@@ -13,7 +13,7 @@ let cannon;
 let angle;
 
 function preload(){
-    bgImg = loadAnimation('assets/bg0','assets/bg1','assets/bg2','assets/bg3','assets/bg4','assets/bg5','assets/bg6','assets/bg7','assets/bg8','assets/bg9');
+    bgImg = loadImage('assets/background.gif')
 }
 function setup(){
     createCanvas(1200,600);
@@ -30,7 +30,8 @@ function setup(){
 }
 
 function draw(){
-    animation(bgImg,0,0,1200,600);
+    background(bgImg);
+
     Engine.update(engine);
     rect(ground.position.x, ground.position.y, width * 2, 1);
 }
