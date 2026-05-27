@@ -8,7 +8,6 @@ let  world;
 let ground;
 let bgImg;
 let tower;
-let towerImg;
 let cannon;
 let angle;
 
@@ -20,18 +19,15 @@ function setup(){
     engine = Engine.create();
     world = engine.world;
 
-    let groundProperties = {
-        isStatic: true
-    }
-
-    ground = Bodies.rectangle(0, height - 1, width * 2, 1, groundProperties);
-    World.add(world, ground);
-    rectMode(CENTER);
+    ground = new Ground(0,height-1,width*2,1);
+    tower = new Tower(150,350,160,310);
 }
 
 function draw(){
     background(bgImg);
 
     Engine.update(engine);
-    rect(ground.position.x, ground.position.y, width * 2, 1);
+
+    ground.display();
+    tower.display();
 }
