@@ -5,7 +5,7 @@ class Tower{
         }
     this.towerImage = loadImage("./assets/tower.png");
     this.w = w;
-    this.w = h;
+    this.h = h;
     this.body = Bodies.rectangle(x,y,this.w,this.h,properties);
     World.add(world,this.body);    
     }
