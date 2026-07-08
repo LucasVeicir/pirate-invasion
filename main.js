@@ -64,6 +64,21 @@ function setup(){
         let img = boatSpriteSheet.get(pos.x, pos.y, pos.w, pos.h);
         boatAnimation.push(img);
     }
+
+    let brokenBoatFrames= brokenBoatSpriteData.frames;
+    for(let i = 0; i<brokenBoatFrames.length; i++){
+        let pos = brokenBoatFrames[i].position;
+        let img = brokenBoatSpriteSheet.get(pos.x, pos.y, pos.w, pos.h);
+        brokenBoatAnimation.push(img);
+    }
+
+    let waterSplashFrames= waterSplashSpriteData.frames;
+    for(let i = 0; i<waterSplashFrames.length; i++){
+        let pos = waterSplashFrames[i].position;
+        let img = waterSplashSpriteSheet.get(pos.x, pos.y, pos.w, pos.h);
+        waterSplashAnimation.push(img);
+    }
+
 }
 
 function draw(){
@@ -101,6 +116,11 @@ function draw(){
 
     tower.display();
     cannon.display();
+
+    fill("#6d4c41");
+    textSize(40);
+    text(`pontuação: ${score}`, width -200, 50);
+    textAlign(CENTER, CENTER);
     
 }
 
@@ -160,11 +180,28 @@ function showCannonBalls(ball, index){
     if (ball){
         ball.display();
         ball.animate();
-        if(ball.body.position.x >= width || ball.body.position.y >= -50){
+        if(ball.body.position.x >= width || ball.body.position.y >= height -50){
             if(!ball.isSink){
                 waterSound.play();
                 ball.remove(index);
             }
         }
     }
+}
+
+function gameOver(){
+    swal(
+        {
+            title:"game over!",
+            text:"thank you for playing",
+            imageUrl:"https://i.postimg.cc/850Rwj7x/boat.png",
+            imageSize:"150x150",
+            confirmButtonText:"play again",
+        },
+        function(isConfirm){
+            if(isConfirm){
+                location.reload();
+            }
+        }
+    )
 }

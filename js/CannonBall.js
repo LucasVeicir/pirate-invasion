@@ -29,7 +29,7 @@ class CannonBall{
         image(this.animation [index], 0, 4, this.r, this.r);
         pop();
         if(this.body.velocity.x > 0 && this.body.position.x > 10 && !this.isSink){
-            let position = [this.position.x, this.position.y];
+            let position = [this.body.position.x, this.body.position.y];
             this.trajectory.push(position);}
 
         for(let i = 0; i < this.trajectory.length; i++){
@@ -39,7 +39,7 @@ class CannonBall{
     }
 
     shoot(){
-        let newAngle = cannon.Angle -28;
+        let newAngle = cannon.angle -28;
         newAngle = newAngle * (3.4 / 180);
         let velocity = p5.Vector.fromAngle(newAngle);
         velocity.mult(0.5);
